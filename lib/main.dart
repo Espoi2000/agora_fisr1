@@ -1,3 +1,4 @@
+import 'package:debut_pratique/clone_whatsapp_ui/home_whatsapp_ui.dart';
 import 'package:debut_pratique/corriger_exercice_1/page_1.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
           useMaterial3: true,
         ),
-        home: Page1()
+        home: HomeWhatsapp()
         //  MyHomePage(
         //   title: "counter color ",
         // )

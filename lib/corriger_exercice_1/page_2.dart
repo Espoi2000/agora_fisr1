@@ -35,12 +35,12 @@ class _Page2State extends State<Page2> {
       body: Container(
         height: sieze.height,
         width: sieze.width,
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -147,7 +147,7 @@ class _Page2State extends State<Page2> {
                     textColor: Colors.white,
                     color: const Color.fromARGB(255, 80, 3, 180),
                     border: Border.all(
-                        width: 1, color: Color.fromARGB(255, 80, 3, 180)),
+                        width: 1, color:const Color.fromARGB(255, 80, 3, 180)),
                   ),
                 )
               ],
