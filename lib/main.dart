@@ -1,5 +1,6 @@
 import 'package:debut_pratique/clone_whatsapp_ui/home_whatsapp_ui.dart';
 import 'package:debut_pratique/corriger_exercice_1/page_1.dart';
+import 'package:debut_pratique/todo_list/todo_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
           useMaterial3: true,
         ),
-        home: HomeWhatsapp()
+        home: const TodoScreen()
         //  MyHomePage(
         //   title: "counter color ",
         // )
@@ -197,14 +198,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      
       _counter++;
     });
   }
 
   @override
   void initState() {
-
     super.initState();
   }
 
