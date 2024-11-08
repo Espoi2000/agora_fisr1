@@ -1,5 +1,6 @@
 import 'package:debut_pratique/clone_whatsapp_ui/home_whatsapp_ui.dart';
 import 'package:debut_pratique/corriger_exercice_1/page_1.dart';
+import 'package:debut_pratique/todo_list/splash_screen.dart';
 import 'package:debut_pratique/todo_list/todo_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,10 +17,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
           useMaterial3: true,
         ),
-        home: const TodoScreen()
+        home: SplashScreen()
         //  MyHomePage(
         //   title: "counter color ",
         // )

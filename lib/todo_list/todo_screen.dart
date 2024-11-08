@@ -10,18 +10,22 @@ class TodoScreen extends StatefulWidget {
 
 class _TodoScreenState extends State<TodoScreen> {
   late final TextEditingController addTaskController;
+  late final TextEditingController updateTaskController;
 
   final formkey = GlobalKey<FormState>();
+  final updateFormkey = GlobalKey<FormState>();
 
   @override
   void initState() {
     addTaskController = TextEditingController();
+    updateTaskController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
     addTaskController.dispose();
+    updateTaskController.dispose();
     super.dispose();
   }
 
@@ -64,6 +68,21 @@ class _TodoScreenState extends State<TodoScreen> {
                       onPressed: () {
                         if (formkey.currentState!.validate()) {
                           print("validé");
+                          print(addTaskController.text);
+
+                          setState(() {
+                            taks.insert(
+                              0,
+                              TaskModel(
+                                  title: addTaskController.text,
+                                  id: taks.length + 1,
+                                  isCheked: false),
+                            );
+
+                            // taks.add();
+                          });
+
+                          addTaskController.clear();
                         }
                       },
                       icon: const Icon(Icons.add))
@@ -80,15 +99,84 @@ class _TodoScreenState extends State<TodoScreen> {
                     return ListTile(
                       title: Text(
                         taskModel.title,
+                        style: TextStyle(
+                            decoration: taskModel.isCheked
+                                ? TextDecoration.lineThrough
+                                : TextDecoration.none),
                       ),
                       trailing: SizedBox(
-                        width: 100,
+                        width: 150,
                         child: Row(
                           children: [
+                            Checkbox(
+                                value: taskModel.isCheked,
+                                onChanged: (value) {
+                                  setState(() {
+                                    taks[index].isCheked = value!;
+                                  });
+                                }),
                             IconButton(
-                                onPressed: () {}, icon: Icon(Icons.edit)),
+                                onPressed: () {
+                                  updateTaskController.text = taskModel.title;
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: const Text("Confirmation"),
+                                        content: Form(
+                                          key: updateFormkey,
+                                          child: TextFormField(
+                                            controller: updateTaskController,
+                                            decoration: const InputDecoration(
+                                              border: InputBorder.none,
+                                              hintText: "Modifier une tâche",
+                                            ),
+                                            validator: (value) {
+                                              if (value!.isEmpty) {
+                                                return "Veuillez saisir une tâche";
+                                              } else {
+                                                return null;
+                                              }
+                                            },
+                                          ),
+                                        ),
+                                        actions: [
+                                          TextButton(
+                                            child: const Text("Cancel"),
+                                            onPressed: () {
+                                              Navigator.of(context)
+                                                  .pop(); // Ferme la boîte de dialogue
+                                            },
+                                          ),
+                                          TextButton(
+                                            child: const Text("Confirm"),
+                                            onPressed: () {
+                                              //
+                                              setState(() {
+                                                taks[index].title =
+                                                    updateTaskController.text;
+                                              });
+                                              //
+                                              Navigator.of(context)
+                                                  .pop(); // Ferme la boîte de dialogue
+                                            },
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                },
+                                icon: const Icon(Icons.edit)),
                             IconButton(
-                                onPressed: () {}, icon: Icon(Icons.delete))
+                                onPressed: () {
+                                  setState(() {
+                                    // taks.removeAt(index);
+
+                                    taks.removeWhere((element) =>
+                                        element.id == taskModel.id);
+                                  });
+                                },
+                                icon: const Icon(Icons.delete))
                           ],
                         ),
                       ),
