@@ -1,3 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:debut_pratique/todo_list/simple_show_image_gird.dart';
+import 'package:debut_pratique/todo_list/staggered_grid.dart';
 import 'package:debut_pratique/todo_list/todo_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -58,9 +61,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   height:
                                       MediaQuery.sizeOf(context).height / 2.5,
                                   width: MediaQuery.sizeOf(context).width,
-                                  decoration: BoxDecoration(
+                                  child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    color: Colors.green,
+                                    child: CachedNetworkImage(
+                                      imageUrl:
+                                          "https://picsum.photos/${index}00",
+                                      imageBuilder: (context, imageProvider) =>
+                                          Container(
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: imageProvider,
+                                              fit: BoxFit.cover,
+                                              colorFilter:
+                                                  const ColorFilter.mode(
+                                                      Colors.red,
+                                                      BlendMode.colorBurn)),
+                                        ),
+                                      ),
+                                      placeholder: (context, url) =>
+                                          const SizedBox(
+                                              child:
+                                                  CircularProgressIndicator()),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.error),
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(
@@ -128,7 +152,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       context,
                       MaterialPageRoute<void>(
                           builder: (BuildContext context) =>
-                              const TodoScreen()),
+                              const StraggeredScreen()),
                       (route) => false,
                     );
                   },
