@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:debut_pratique/todo_list/simple_show_image_gird.dart';
 import 'package:debut_pratique/todo_list/staggered_grid.dart';
-import 'package:debut_pratique/todo_list/todo_screen.dart';
+import 'package:debut_pratique/feature/presentation/view/todo_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

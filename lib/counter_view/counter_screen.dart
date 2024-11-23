@@ -1,4 +1,3 @@
-import 'package:debut_pratique/bloc/counter_bloc.dart';
 import 'package:debut_pratique/counter_view/another_view.dart';
 import 'package:debut_pratique/cubit/counter_cubit_cubit.dart';
 import 'package:flutter/material.dart';

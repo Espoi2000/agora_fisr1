@@ -3,8 +3,9 @@ import 'package:debut_pratique/clone_whatsapp_ui/home_whatsapp_ui.dart';
 import 'package:debut_pratique/corriger_exercice_1/page_1.dart';
 import 'package:debut_pratique/counter_view/counter_screen.dart';
 import 'package:debut_pratique/cubit/counter_cubit_cubit.dart';
+import 'package:debut_pratique/feature/bisiness_logic/bloc/todo_bloc.dart';
 import 'package:debut_pratique/todo_list/splash_screen.dart';
-import 'package:debut_pratique/todo_list/todo_screen.dart';
+import 'package:debut_pratique/feature/presentation/view/todo_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +18,9 @@ void main() {
         ),
         BlocProvider(
           create: (context) => CounterCubitCubit(),
+        ),
+        BlocProvider(
+          create: (context) => TodoBloc(),
         )
       ],
       child: const MyApp(),
@@ -36,7 +40,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
           useMaterial3: true,
         ),
-        home: CounterScreen()
+        home: const TodoScreen()
         //  MyHomePage(
         //   title: "counter color ",
         // )
