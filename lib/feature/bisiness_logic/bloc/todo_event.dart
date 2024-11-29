@@ -16,5 +16,12 @@ class TodoDeleteEvent extends TodoEvent {
 class TodoUpdateEvent extends TodoEvent {
   final String upadeString;
   final int index;
-  TodoUpdateEvent({required this.upadeString, required this.index});
+  final TaskStatus? status;
+  TodoUpdateEvent(
+      {required this.upadeString, required this.index, this.status});
 }
+
+// class TodoChangeStateEvent extends TodoEvent {
+//   final TaskModel taskModel;
+//   TodoChangeStateEvent({required this.taskModel});
+// }

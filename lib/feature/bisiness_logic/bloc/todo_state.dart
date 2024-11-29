@@ -21,3 +21,4 @@ final class TodoDeleteState extends TodoState {
 final class TodoUpdateState extends TodoState {
   const TodoUpdateState({required super.taks});
 }
+
