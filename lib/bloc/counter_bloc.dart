@@ -10,7 +10,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
       var currentState = state.count + 1;
       emit(CurrentCount(count: currentState));
     });
-
+    
     on<DecrementEvent>((event, emit) {
       var currentState = state.count - 1;
       emit(CurrentCount(count: currentState));

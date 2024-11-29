@@ -7,6 +7,7 @@ part 'todo_state.dart';
 
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
   TodoBloc() : super(const TodoInitial(taks: [])) {
+    
     on<TodoAddEvent>((event, emit) {
       List<TaskModel> currentTaks = List.from(state.taks)..add(event.taskModel);
       emit(TodoAddState(taks: currentTaks.toList()));
